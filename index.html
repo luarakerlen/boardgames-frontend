@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jogos de tabuleiro</title>
+
+		<!-- ESTILOS DO PROJETO -->
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/header.css" />
+
+		<!-- SCRIPTS DO PROJETO -->
+		<script src="./scripts/scripts.js"></script>
+		<script type="module" src="./scripts/header.js"></script>
+
+		<!-- SCRIPT PARA ÍCONES -->
+		<script
+			src="https://kit.fontawesome.com/ed9338fcbf.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div class="container">
+			<!-- HEADER -->
+			<header>
+				<div id="headerButtons" class="hidden">
+					<button onclick="scrollToUnavailableGames()">
+						<p>Ver jogos indisponíveis</p>
+						<i class="fa-solid fa-arrow-down"></i>
+					</button>
+
+					<button onclick="handleReset()">
+						<p>Resetar</p>
+						<i class="fa-solid fa-rotate-right"></i>
+					</button>
+				</div>
+
+				<div class="playersNumber">
+					<h4>Quantas pessoas vão jogar?</h4>
+					<ul id="playersList"></ul>
+				</div>
+			</header>
+
+			<!-- BUTTONS -->
+			<button class="plus__button">
+				<i class="fa-solid fa-plus fa-xl"></i>
+			</button>
+
+			<button class="arrow__up__button" onclick="scrollToTop()">
+				<i class="fa-solid fa-arrow-up fa-xl"></i>
+			</button>
+		</div>
+	</body>
+</html>
