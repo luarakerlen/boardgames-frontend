@@ -1,5 +1,6 @@
 import { updateHeaderButtonsVisibility } from './header.js';
 import { updateChooseGameButtonState, setRandomGame } from './chooseGame.js';
+import { renderGamesList } from './gamesList.js';
 import {
 	allGames,
 	setAvailableGames,
@@ -47,6 +48,8 @@ function handlePlayersNumber(number) {
 
 	updateHeaderButtonsVisibility();
 	updateChooseGameButtonState();
+
+	renderGamesList();
 }
 
 // CRIANDO OS BOTÕES DE QUANTIDADE DE JOGADORES DINAMICAMENTE

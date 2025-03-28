@@ -1,5 +1,6 @@
 import { hideElement, showElement } from './scripts.js';
 import { updateChooseGameButtonState, setRandomGame } from './chooseGame.js';
+import { renderGamesList } from './gamesList.js';
 import {
 	removeAllActiveClass,
 	setChosenPlayersNumber,
@@ -31,6 +32,7 @@ function handleReset() {
 	updateHeaderButtonsVisibility();
 	updateChooseGameButtonState();
 	removeAllActiveClass();
+	renderGamesList();
 }
 
 export function updateHeaderButtonsVisibility() {

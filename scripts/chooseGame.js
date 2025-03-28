@@ -17,15 +17,15 @@ export function setRandomGame(game) {
 }
 
 function renderChosenGameCard() {
-	const cardTitle = document.getElementById('chosenGameTitle');
-	const cardImage = document.getElementById('chosenGameImage');
-	const cardDescription = document.getElementById('chosenGameDescription');
+	const title = document.getElementById('chosenGameTitle');
+	const image = document.getElementById('chosenGameImage');
+	const description = document.getElementById('chosenGameDescription');
 
 	if (randomGame) {
-		cardTitle.textContent = randomGame.name;
-		cardImage.src = randomGame.image;
-		cardImage.alt = randomGame.name;
-		cardDescription.textContent = `Jogadores: ${randomGame.minPlayers} a ${randomGame.maxPlayers}`;
+		title.textContent = randomGame.name;
+		image.src = randomGame.image;
+		image.alt = randomGame.name;
+		description.textContent = `Jogadores: ${randomGame.minPlayers} a ${randomGame.maxPlayers}`;
 	}
 }
 
