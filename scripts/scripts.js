@@ -9,9 +9,23 @@ export function hideElement(element) {
 }
 
 // Funções dos botões
+const scrollToTopButton = document.getElementById('scrollToTopButton');
+const SCROLL_THRESHOLD = 250;
+
+function toggleVisible() {
+	if (document.documentElement.scrollTop > SCROLL_THRESHOLD) {
+		showElement(scrollToTopButton);
+	} else {
+		hideElement(scrollToTopButton);
+	}
+}
+
 function scrollToTop() {
 	window.scrollTo({
 		top: 0,
 		behavior: 'smooth',
 	});
 }
+
+window.scrollToTop = scrollToTop;
+window.addEventListener('scroll', toggleVisible);

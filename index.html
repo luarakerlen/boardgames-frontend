@@ -8,9 +8,10 @@
 		<!-- ESTILOS DO PROJETO -->
 		<link rel="stylesheet" href="./styles/styles.css" />
 		<link rel="stylesheet" href="./styles/header.css" />
-		<link rel="stylesheet" href="./styles/chooseGame.css" />
 		<link rel="stylesheet" href="./styles/playersNumber.css" />
 		<link rel="stylesheet" href="./styles/card.css" />
+		<link rel="stylesheet" href="./styles/chooseGame.css" />
+		<link rel="stylesheet" href="./styles/gamesList.css" />
 
 		<!-- SCRIPTS DO PROJETO -->
 		<script type="module" src="./scripts/scripts.js"></script>
@@ -29,7 +30,7 @@
 		<div class="container">
 			<!-- HEADER -->
 			<header>
-				<div id="headerButtons" class="hidden">
+				<nav id="headerButtons" class="hidden">
 					<button onclick="scrollToUnavailableGames()">
 						<p>Ver jogos indisponíveis</p>
 						<i class="fa-solid fa-arrow-down"></i>
@@ -39,7 +40,7 @@
 						<p>Resetar</p>
 						<i class="fa-solid fa-rotate-right"></i>
 					</button>
-				</div>
+				</nav>
 
 				<div class="playersNumber">
 					<h4>Quantas pessoas vão jogar?</h4>
@@ -59,12 +60,12 @@
 				</button>
 			</header>
 
-			<!-- JOGO ESCOLHIDO -->
+			<!-- SEÇÃO: JOGO ESCOLHIDO -->
 			<section id="chosenGameSection" class="chosenGameContainer hidden">
-				<h1 class="chosenGameTitle">Jogo escolhido</h1>
+				<h2 class="chosenGameTitle">Jogo escolhido</h2>
 				<div class="cardContainer">
 					<div class="cardHeader">
-						<h2 id="chosenGameTitle" class="cardTitle"></h2>
+						<h3 id="chosenGameTitle" class="cardTitle"></h3>
 					</div>
 					<img
 						id="chosenGameImage"
@@ -76,14 +77,36 @@
 				</div>
 			</section>
 
+			<!-- SEÇÃO: JOGOS DISPONÍVEIS -->
+			<section id="availableGamesSection" class="gamesListContainer">
+				<h2 class="gamesListTitle">
+					Jogos disponíveis (<span id="availableGamesCount">0</span>):
+				</h2>
+				<ul id="availableGamesList" class="gamesList"></ul>
+			</section>
+
+			<!-- SEÇÃO: JOGOS INDISPONÍVEIS -->
+			<section id="unavailableGamesSection" class="gamesListContainer">
+				<h2 class="gamesListTitle">
+					Jogos que não podem ser escolhidos (<span id="unavailableGamesCount"
+						>0</span
+					>):
+				</h2>
+				<ul id="unavailableGamesList" class="gamesList"></ul>
+			</section>
+
 			<!-- BOTÕES FIXOS -->
 			<button class="plus__button">
 				<i class="fa-solid fa-plus fa-xl"></i>
 				<span>Adicionar jogo</span>
 			</button>
 
-			<button class="arrow__up__button" onclick="scrollToTop()">
-				<i class="fa-solid fa-arrow-up fa-xl"></i>
+			<button
+				id="scrollToTopButton"
+				class="arrow__up__button hidden"
+				onclick="scrollToTop()"
+			>
+				<div><i class="fa-solid fa-arrow-up fa-xl"></i></div>
 			</button>
 		</div>
 	</body>

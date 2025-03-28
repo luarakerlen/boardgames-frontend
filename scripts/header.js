@@ -13,7 +13,9 @@ import {
 } from './boardgames.js';
 
 function scrollToUnavailableGames() {
-	const unavailableGamesRef = document.getElementById('unavailableGames');
+	const unavailableGamesRef = document.getElementById(
+		'unavailableGamesSection'
+	);
 	if (unavailableGamesRef) {
 		unavailableGamesRef.scrollIntoView({
 			behavior: 'smooth',
