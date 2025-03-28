@@ -7,9 +7,7 @@ const availableGamesCount = document.getElementById('availableGamesCount');
 const unavailableGamesCount = document.getElementById('unavailableGamesCount');
 
 function renderGameCard(game, list) {
-	const li = document.createElement('li');
-
-	const container = document.createElement('div');
+	const container = document.createElement('li');
 	container.classList.add('cardContainer');
 
 	const header = document.createElement('div');
@@ -40,8 +38,7 @@ function renderGameCard(game, list) {
 	container.appendChild(image);
 	container.appendChild(description);
 
-	li.appendChild(container);
-	list.appendChild(li);
+	list.appendChild(container);
 }
 
 export function renderGamesList() {
