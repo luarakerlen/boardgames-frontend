@@ -3,6 +3,9 @@ import { availableGames, unavailableGames } from './boardgames.js';
 const availableGamesList = document.getElementById('availableGamesList');
 const unavailableGamesList = document.getElementById('unavailableGamesList');
 
+const availableGamesCount = document.getElementById('availableGamesCount');
+const unavailableGamesCount = document.getElementById('unavailableGamesCount');
+
 function renderGameCard(game, list) {
 	const li = document.createElement('li');
 
@@ -42,16 +45,19 @@ function renderGameCard(game, list) {
 }
 
 export function renderGamesList() {
-  availableGamesList.innerHTML = '';
-  unavailableGamesList.innerHTML = '';
+	availableGamesList.innerHTML = '';
+	unavailableGamesList.innerHTML = '';
 
-  availableGames.forEach((game) => {
-    renderGameCard(game, availableGamesList);
-  });
-  
-  unavailableGames.forEach((game) => {
-    renderGameCard(game, unavailableGamesList);
-  });
+	availableGames.forEach((game) => {
+		renderGameCard(game, availableGamesList);
+	});
+
+	unavailableGames.forEach((game) => {
+		renderGameCard(game, unavailableGamesList);
+	});
+
+	availableGamesCount.textContent = availableGames.length ?? 0;
+	unavailableGamesCount.textContent = unavailableGames.length ?? 0;
 }
 
 renderGamesList();
