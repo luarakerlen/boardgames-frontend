@@ -2,6 +2,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	font-family: sans-serif;
 }
 
 /* BOTÕES INICIAIS */
@@ -67,6 +68,7 @@ header {
 	background-color: #f7a440;
 }
 
+/* BOTÃO PRINCIPAL */
 .mainButton {
 	background-color: #027df7;
 	border-radius: 8px;
