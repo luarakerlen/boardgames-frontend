@@ -1,10 +1,15 @@
+import { showElement, hideElement } from './scripts.js';
 import { availableGames, unavailableGames } from './boardgames.js';
 
-const availableGamesList = document.getElementById('availableGamesList');
-const unavailableGamesList = document.getElementById('unavailableGamesList');
+const unavailableGamesSection = document.getElementById(
+	'unavailableGamesSection'
+);
 
 const availableGamesCount = document.getElementById('availableGamesCount');
 const unavailableGamesCount = document.getElementById('unavailableGamesCount');
+
+const availableGamesList = document.getElementById('availableGamesList');
+const unavailableGamesList = document.getElementById('unavailableGamesList');
 
 function renderGameCard(game, list) {
 	const container = document.createElement('li');
@@ -42,6 +47,15 @@ function renderGameCard(game, list) {
 }
 
 export function renderGamesList() {
+	if (unavailableGames.length > 0) {
+		showElement(unavailableGamesSection);
+	} else {
+		hideElement(unavailableGamesSection);
+	}
+
+	availableGamesCount.textContent = availableGames.length ?? 0;
+	unavailableGamesCount.textContent = unavailableGames.length ?? 0;
+
 	availableGamesList.innerHTML = '';
 	unavailableGamesList.innerHTML = '';
 
@@ -52,9 +66,6 @@ export function renderGamesList() {
 	unavailableGames.forEach((game) => {
 		renderGameCard(game, unavailableGamesList);
 	});
-
-	availableGamesCount.textContent = availableGames.length ?? 0;
-	unavailableGamesCount.textContent = unavailableGames.length ?? 0;
 }
 
 renderGamesList();
