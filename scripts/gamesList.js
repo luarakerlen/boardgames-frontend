@@ -45,14 +45,6 @@ function handleGameCardClick(game, isAvailable) {
 }
 
 function renderGameCard(game, list, isAvailable) {
-	// Cria o container li
-	const container = document.createElement('li');
-	container.classList.add('cardContainer');
-
-	// Cria o header da card
-	const header = document.createElement('div');
-	header.classList.add('cardHeader');
-
 	// Cria o título do header
 	const title = document.createElement('h3');
 	title.classList.add('cardTitle');
@@ -65,13 +57,50 @@ function renderGameCard(game, list, isAvailable) {
 	const classIcon = isAvailable ? 'fa-ban' : 'fa-square-plus';
 	const classTypeIcon = isAvailable ? 'fa-solid' : 'fa-regular';
 
-	// Cria o ícone do botão
-	const icon = document.createElement('i');
-	icon.classList.add('fa-xl', classIcon, classTypeIcon);
+	// Cria os ícones dos botões
+	const deleteIcon = document.createElement('i');
+	deleteIcon.classList.add('fa-solid', 'fa-trash', 'fa-xl');
+
+	const availabilityIcon = document.createElement('i');
+	availabilityIcon.classList.add('fa-xl', classIcon, classTypeIcon);
+
+	// Cria os tooltips
+	const deleteTooltip = document.createElement('span');
+	deleteTooltip.classList.add('tooltipText');
+	deleteTooltip.textContent = 'Deletar jogo';
+
+	const availabilityTooltip = document.createElement('span');
+	availabilityTooltip.classList.add('tooltipText');
+	availabilityTooltip.textContent = isAvailable
+		? 'Tornar indisponível'
+		: 'Tornar disponível';
+
+	// Cria o botão de deletar
+	const deleteButton = document.createElement('button');
+	deleteButton.classList.add('cardButton', 'tooltip', 'cardButtonIconAvailable');
+	deleteButton.appendChild(deleteIcon);
+	deleteButton.appendChild(deleteTooltip);
 
 	// Cria o botão de tornar disponível ou indisponível
 	const availabilityButton = document.createElement('button');
-	availabilityButton.classList.add('cardButton', classButton);
+	availabilityButton.classList.add('cardButton', 'tooltip', classButton);
+	availabilityButton.appendChild(availabilityIcon);
+	availabilityButton.appendChild(availabilityTooltip);
+	availabilityButton.addEventListener('click', () => {
+		handleGameCardClick(game, isAvailable);
+	});
+
+	// Cria o container dos botões
+	const buttonContainer = document.createElement('div');
+	buttonContainer.classList.add('cardButtonContainer');
+	buttonContainer.appendChild(deleteButton);
+	buttonContainer.appendChild(availabilityButton);
+
+	// Cria o header da card
+	const header = document.createElement('div');
+	header.classList.add('cardHeader');
+	header.appendChild(title);
+	header.appendChild(buttonContainer);
 
 	// Cria a imagem do jogo
 	const image = document.createElement('img');
@@ -84,13 +113,9 @@ function renderGameCard(game, list, isAvailable) {
 	description.classList.add('cardDescription');
 	description.textContent = `Jogadores: ${game.minPlayers} a ${game.maxPlayers}`;
 
-	availabilityButton.appendChild(icon);
-	header.appendChild(title);
-	header.appendChild(availabilityButton);
-	availabilityButton.addEventListener('click', () => {
-		handleGameCardClick(game, isAvailable);
-	});
-
+	// Cria o container do elemento li
+	const container = document.createElement('li');
+	container.classList.add('cardContainer');
 	container.appendChild(header);
 	container.appendChild(image);
 	container.appendChild(description);

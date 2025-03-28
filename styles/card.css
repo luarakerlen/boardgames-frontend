@@ -27,6 +27,13 @@
 	max-width: 80%;
 }
 
+.cardButtonContainer {
+	display: flex;
+	gap: 0.5rem;
+	position: absolute;
+	right: 0;
+}
+
 .cardButton {
 	border: none;
 	cursor: pointer;
@@ -36,8 +43,6 @@
 	align-items: center;
 
 	background-color: transparent;
-	position: absolute;
-	right: 0;
 }
 
 .cardButtonIconAvailable {
