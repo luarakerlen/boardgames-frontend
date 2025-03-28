@@ -1,4 +1,6 @@
 import { boardgames } from '../data/boardgames.js';
+import { renderChosenGameCard } from './card.js';
+import { hideElement, showElement } from './scripts.js';
 
 const playersList = document.getElementById('playersList');
 const playersNumber = Array.from({ length: 10 }, (_, i) => i + 1);
@@ -7,11 +9,13 @@ let chosenPlayersNumber = null;
 const allGames = boardgames;
 let availableGames = allGames;
 let unavailableGames = [];
-let randomGame = null;
+
+export let randomGame = null;
+const chosenGameSection = document.getElementById('chosenGameSection');
 
 // FUNÇÕES DOS BOTÕES INICIAIS DO HEADER
 function scrollToUnavailableGames() {
-	const unavailableGamesRef = document.getElementById('unavailable-games');
+	const unavailableGamesRef = document.getElementById('unavailableGames');
 	if (unavailableGamesRef) {
 		unavailableGamesRef.scrollIntoView({
 			behavior: 'smooth',
@@ -27,6 +31,8 @@ function handleReset() {
 	updateHeaderButtonsVisibility();
 	updateMainButtonState();
 	removeAllActiveClass();
+
+	hideElement(chosenGameSection);
 }
 
 function updateHeaderButtonsVisibility() {
@@ -35,11 +41,9 @@ function updateHeaderButtonsVisibility() {
 	const shouldShowHeaderButtons = hasUnavailableGames || chosenPlayersNumber; // Defina essas variáveis conforme sua lógica
 
 	if (shouldShowHeaderButtons) {
-		headerButtons.classList.add('visible');
-		headerButtons.classList.remove('hidden');
+		showElement(headerButtons);
 	} else {
-		headerButtons.classList.add('hidden');
-		headerButtons.classList.remove('visible');
+		hideElement(headerButtons);
 	}
 }
 
@@ -71,8 +75,10 @@ function handlePlayersNumber(number) {
 		(game) => game.minPlayers > number || game.maxPlayers < number
 	);
 
+	randomGame = null;
 	updateHeaderButtonsVisibility();
 	updateMainButtonState();
+	hideElement(chosenGameSection);
 
 	console.log('Jogos Disponíveis:', availableGames);
 	console.log('Jogos Indisponíveis:', unavailableGames);
@@ -94,8 +100,10 @@ playersNumber.forEach((number) => {
 // FUNÇÕES PARA O BOTÃO DE ESCOLHER JOGO ALEATÓRIO
 function chooseRandomGame() {
 	const randomIndex = Math.floor(Math.random() * availableGames.length);
-	const randomGame = availableGames[randomIndex];
-	console.log(randomGame);
+	randomGame = availableGames[randomIndex];
+
+	showElement(chosenGameSection);
+	renderChosenGameCard(randomGame);
 }
 
 function updateMainButtonState() {
