@@ -25,6 +25,8 @@ function handleReset() {
 	unavailableGames = [];
 	randomGame = null;
 	updateHeaderButtonsVisibility();
+	updateMainButtonState();
+	removeAllActiveClass();
 }
 
 function updateHeaderButtonsVisibility() {
@@ -42,13 +44,15 @@ function updateHeaderButtonsVisibility() {
 }
 
 // FUNÇÕES DOS BOTÕES DE QUANTIDADE DE JOGADORES
-function handlePlayersNumber(number) {
-	chosenPlayersNumber = number;
-
-	// Remove classe 'active' de todos os botões
+function removeAllActiveClass() {
 	document.querySelectorAll('.playersNumber ul li button').forEach((button) => {
 		button.classList.remove('active');
 	});
+}
+
+function handlePlayersNumber(number) {
+	chosenPlayersNumber = number;
+	removeAllActiveClass();
 
 	// Adiciona classe 'active' ao botão clicado
 	const activeButton = document.querySelector(
@@ -68,6 +72,7 @@ function handlePlayersNumber(number) {
 	);
 
 	updateHeaderButtonsVisibility();
+	updateMainButtonState();
 
 	console.log('Jogos Disponíveis:', availableGames);
 	console.log('Jogos Indisponíveis:', unavailableGames);
@@ -86,5 +91,26 @@ playersNumber.forEach((number) => {
 	playersList.appendChild(li);
 });
 
+// FUNÇÕES PARA O BOTÃO DE ESCOLHER JOGO ALEATÓRIO
+function chooseRandomGame() {
+	const randomIndex = Math.floor(Math.random() * availableGames.length);
+	const randomGame = availableGames[randomIndex];
+	console.log(randomGame);
+}
+
+function updateMainButtonState() {
+	const button = document.getElementById('randomGameButton');
+	const textHelp = document.getElementById('randomGameButtonTextHelp');
+
+	if (chosenPlayersNumber) {
+		button.disabled = false; // Habilita o botão
+		textHelp.style.display = 'none'; // Esconde o texto
+	} else {
+		button.disabled = true; // Desabilita o botão
+		textHelp.style.display = 'block'; // Exibe o texto
+	}
+}
+
 window.handleReset = handleReset;
 window.scrollToUnavailableGames = scrollToUnavailableGames;
+window.chooseRandomGame = chooseRandomGame;
