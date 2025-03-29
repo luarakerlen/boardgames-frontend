@@ -32,13 +32,13 @@ function scrollToTop() {
 function openAddGameModal() {
 	showElement(addGameModal);
 	showElement(modalOverlay);
-	document.body.classList.add('modal-open');
+	document.body.classList.add('modalOpen');
 }
 
 function closeAddGameModal() {
 	hideElement(addGameModal);
 	hideElement(modalOverlay);
-	document.body.classList.remove('modal-open');
+	document.body.classList.remove('modalOpen');
 }
 
 window.openAddGameModal = openAddGameModal;
