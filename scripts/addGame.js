@@ -7,25 +7,22 @@ export const gameMinPlayersInput = document.querySelector('#gameMinPlayers');
 export const gameMaxPlayersInput = document.querySelector('#gameMaxPlayers');
 export const gameImageInput = document.querySelector('#gameImage');
 
+const isAddButtonDisabled =
+	!gameNameInput.value.trim() ||
+	!gameMinPlayersInput.value ||
+	!gameMaxPlayersInput.value;
+
 function handleAddGame(event) {
-  event.preventDefault();
-  closeAddGameModal();
+	event.preventDefault();
+	closeAddGameModal();
 
 	Swal.fire({
 		title: 'Sucesso!',
 		text: 'O jogo foi adicionado à coleção.',
 		icon: 'success',
 		confirmButtonText: 'OK',
-    confirmButtonColor: '#007bff',
+		confirmButtonColor: '#007bff',
 	});
-}
-
-function isAddButtonDisabled() {
-	return (
-		!gameNameInput.value.trim() ||
-		!gameMinPlayersInput.value ||
-		!gameMaxPlayersInput.value
-	);
 }
 
 export function toggleAddButton() {
