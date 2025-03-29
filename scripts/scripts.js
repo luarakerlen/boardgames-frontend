@@ -43,5 +43,9 @@ function closeAddGameModal() {
 
 window.openAddGameModal = openAddGameModal;
 window.closeAddGameModal = closeAddGameModal;
+document
+	.getElementById('modalOverlay')
+	.addEventListener('click', closeAddGameModal);
+
 window.scrollToTop = scrollToTop;
 window.addEventListener('scroll', toggleVisible);
