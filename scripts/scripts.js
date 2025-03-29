@@ -9,6 +9,8 @@ export function hideElement(element) {
 }
 
 // Funções dos botões
+const modalOverlay = document.getElementById('modalOverlay');
+const addGameModal = document.getElementById('addGameModal');
 const scrollToTopButton = document.getElementById('scrollToTopButton');
 const SCROLL_THRESHOLD = 250;
 
@@ -27,5 +29,19 @@ function scrollToTop() {
 	});
 }
 
+function openAddGameModal() {
+	showElement(addGameModal);
+	showElement(modalOverlay);
+	document.body.classList.add('modal-open');
+}
+
+function closeAddGameModal() {
+	hideElement(addGameModal);
+	hideElement(modalOverlay);
+	document.body.classList.remove('modal-open');
+}
+
+window.openAddGameModal = openAddGameModal;
+window.closeAddGameModal = closeAddGameModal;
 window.scrollToTop = scrollToTop;
 window.addEventListener('scroll', toggleVisible);
