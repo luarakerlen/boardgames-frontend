@@ -44,6 +44,28 @@ function handleGameCardClick(game, isAvailable) {
 	renderGamesList();
 }
 
+function handleDeleteGameClick(game) {
+	Swal.fire({
+		title: 'Tem certeza?',
+		html: `Você está deletando o jogo <strong>${game.name}</strong>.<br>Você não poderá desfazer essa ação!`,
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Sim, excluir!',
+		cancelButtonText: 'Cancelar',
+		confirmButtonColor: '#007bff',
+	}).then((result) => {
+		if (result.isConfirmed) {
+			Swal.fire({
+				title: 'Excluído!',
+				html: `O jogo <strong>${game.name}</strong> foi removido.`,
+				icon: 'success',
+				confirmButtonColor: '#007bff',
+			});
+			// Add código pra excluir o jogo
+		}
+	});
+}
+
 function renderGameCard(game, list, isAvailable) {
 	// Cria o título do header
 	const title = document.createElement('h3');
@@ -77,9 +99,16 @@ function renderGameCard(game, list, isAvailable) {
 
 	// Cria o botão de deletar
 	const deleteButton = document.createElement('button');
-	deleteButton.classList.add('cardButton', 'tooltip', 'cardButtonIconAvailable');
+	deleteButton.classList.add(
+		'cardButton',
+		'tooltip',
+		'cardButtonIconAvailable'
+	);
 	deleteButton.appendChild(deleteIcon);
 	deleteButton.appendChild(deleteTooltip);
+	deleteButton.addEventListener('click', () => {
+		handleDeleteGameClick(game);
+	});
 
 	// Cria o botão de tornar disponível ou indisponível
 	const availabilityButton = document.createElement('button');
