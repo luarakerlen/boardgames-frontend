@@ -26,7 +26,7 @@ function handleAddGame(event) {
 }
 
 export function toggleAddButton() {
-	if (isAddButtonDisabled()) {
+	if (isAddButtonDisabled) {
 		addGameButton.setAttribute('disabled', 'true');
 	} else {
 		addGameButton.removeAttribute('disabled');
