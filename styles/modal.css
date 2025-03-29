@@ -126,6 +126,11 @@
 	background-color: #f4f4f4;
 }
 
+.modal button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
 	.modal {

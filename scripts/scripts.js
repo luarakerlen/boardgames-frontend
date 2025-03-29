@@ -1,3 +1,11 @@
+import {
+	gameNameInput,
+	gameMinPlayersInput,
+	gameMaxPlayersInput,
+	gameImageInput,
+	toggleAddButton,
+} from './addGame.js';
+
 export function showElement(element) {
 	element.classList.remove('hidden');
 	element.classList.add('visible');
@@ -39,6 +47,13 @@ function closeAddGameModal() {
 	hideElement(addGameModal);
 	hideElement(modalOverlay);
 	document.body.classList.remove('modalOpen');
+
+	gameNameInput.value = null;
+	gameMinPlayersInput.value = null;
+	gameMaxPlayersInput.value = null;
+	gameImageInput.value = null;
+
+	toggleAddButton();
 }
 
 window.openAddGameModal = openAddGameModal;
