@@ -45,12 +45,16 @@
 			<!-- HEADER -->
 			<header>
 				<nav id="headerButtons" class="hidden">
-					<button onclick="scrollToUnavailableGames()">
+					<button
+						id="seeUnavailableGamesButton"
+						class="hidden"
+						onclick="scrollToUnavailableGames()"
+					>
 						<p>Ver jogos indisponíveis</p>
 						<i class="fa-solid fa-arrow-down"></i>
 					</button>
 
-					<button onclick="handleReset()">
+					<button id="resetButton" class="hidden" onclick="handleReset()">
 						<p>Resetar</p>
 						<i class="fa-solid fa-rotate-right"></i>
 					</button>

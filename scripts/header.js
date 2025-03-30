@@ -37,13 +37,38 @@ function handleReset() {
 
 export function updateHeaderButtonsVisibility() {
 	const headerButtons = document.getElementById('headerButtons');
+	const resetButton = document.getElementById('resetButton');
+	const seeUnavailableGamesButton = document.getElementById(
+		'seeUnavailableGamesButton'
+	);
+
 	const hasUnavailableGames = unavailableGames.length > 0;
-	const shouldShowHeaderButtons = hasUnavailableGames || chosenPlayersNumber;
+	const shouldShowHeaderButtons = hasUnavailableGames || !!chosenPlayersNumber;
+	const shouldShowSeeUnavailableGamesButton = hasUnavailableGames;
+	const shouldShowResetButton = hasUnavailableGames || !!chosenPlayersNumber;
+
+	console.log('hasUnavailableGames:', hasUnavailableGames);
+	console.log('chosenPlayersNumber:', chosenPlayersNumber);
+	console.log('shouldShowHeaderButtons:', shouldShowHeaderButtons);	
+	console.log('shouldShowSeeUnavailableGamesButton:', shouldShowSeeUnavailableGamesButton);
+	console.log('shouldShowResetButton:', shouldShowResetButton);
 
 	if (shouldShowHeaderButtons) {
 		showElement(headerButtons);
 	} else {
 		hideElement(headerButtons);
+	}
+
+	if (shouldShowSeeUnavailableGamesButton) {
+		showElement(seeUnavailableGamesButton);
+	} else {
+		hideElement(seeUnavailableGamesButton);
+	}
+
+	if (shouldShowResetButton) {
+		showElement(resetButton);
+	} else {
+		hideElement(resetButton);
 	}
 }
 
