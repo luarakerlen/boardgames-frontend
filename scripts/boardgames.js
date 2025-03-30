@@ -1,4 +1,4 @@
-import { boardgames } from '../data/boardgames.js';
+import { boardgames } from './backend.js';
 
 export const allGames = boardgames;
 
