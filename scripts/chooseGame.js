@@ -37,14 +37,24 @@ function chooseRandomGame() {
 
 export function updateChooseGameButtonState() {
 	const button = document.getElementById('randomGameButton');
+	const text = document.getElementById('randomGameButtonText');
 	const textHelp = document.getElementById('randomGameButtonTextHelp');
 
-	if (chosenPlayersNumber) {
+	if (!!chosenPlayersNumber && availableGames.length > 0) {
 		button.disabled = false; // Habilita o botão
-		textHelp.style.display = 'none'; // Esconde o texto
+		textHelp.style.display = 'none'; // Esconde o texto de apoio
+
+		text.textContent = 'Escolher um jogo aleatoriamente';
+		textHelp.textContent = '(escolha a quantidade de jogadores primeiro)';
 	} else {
 		button.disabled = true; // Desabilita o botão
-		textHelp.style.display = 'block'; // Exibe o texto
+		textHelp.style.display = 'block'; // Exibe o texto de apoio
+	}
+
+	if (availableGames.length === 0) {
+		text.textContent =
+			'Nenhum jogo disponível para o número de jogadores escolhido.';
+		textHelp.textContent = 'Escolha outro número de jogadores.';
 	}
 }
 
