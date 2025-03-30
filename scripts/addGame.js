@@ -18,30 +18,39 @@ function isAddButtonDisabled() {
 
 async function handleAddGame(event) {
 	event.preventDefault();
-	closeAddGameModal();
 
+	// Captura os valores dos inputs
+	const name = gameNameInput.value.trim();
+	const minPlayers = gameMinPlayersInput.value.trim();
+	const maxPlayers = gameMaxPlayersInput.value.trim();
+	const imageUrl = gameImageInput.value.trim();
+
+	// Adiciona os valores ao FormData
 	const formData = new FormData();
-	formData.append('name', gameNameInput.value);
-	formData.append('min_players', gameMinPlayersInput.value);
-	formData.append('max_players', gameMaxPlayersInput.value);
-	formData.append('image_url', gameImageInput.value);
-	console.log('formData', formData);
+	formData.append('name', name);
+	formData.append('min_players', minPlayers);
+	formData.append('max_players', maxPlayers);
+	formData.append('image_url', imageUrl);
 
 	try {
-		const result = await addGame(formData);
+		await addGame(formData);
 
 		Swal.fire({
-				title: 'Sucesso!',
-				text: 'O jogo foi adicionado à coleção.',
-				icon: 'success',
-				confirmButtonText: 'OK',
-				confirmButtonColor: '#007bff',
-			});
+			title: 'Sucesso!',
+			text: 'O jogo foi adicionado à coleção.',
+			icon: 'success',
+			confirmButtonText: 'OK',
+			confirmButtonColor: '#007bff',
+		});
+
+		closeAddGameModal();
 	} catch (error) {
 		console.error('Erro ao adicionar jogo:', error.message || error);
 		Swal.fire({
 			title: 'Erro!',
-			text: `Ocorreu um erro ao adicionar o jogo: ${error.message || 'Erro desconhecido'}`,
+			text: `Ocorreu um erro ao adicionar o jogo: ${
+				error.message || 'Erro desconhecido'
+			}`,
 			icon: 'error',
 			confirmButtonText: 'OK',
 			confirmButtonColor: '#dc3545',

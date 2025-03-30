@@ -37,15 +37,11 @@ getList();
 
 export async function addGame(game) {
 	const url = `${BASE_URL}/boardgame`;
-	console.log('game', game);
 
 	try {
 		const response = await fetch(url, {
 			method: 'post',
-			headers: {
-				'Content-Type': 'multipart/form-data',
-			},
-			body: JSON.stringify(game),
+			body: game,
 		});
 
 		if (!response.ok) {
@@ -64,7 +60,7 @@ export async function addGame(game) {
 		return data;
 	} catch (error) {
 		console.error('Erro ao adicionar jogo no backend:', error.message || error);
-    throw error;
+		throw error;
 	}
 }
 
