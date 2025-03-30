@@ -1,4 +1,4 @@
-import { renderGamesList } from './gamesList.js';
+import { renderGamesList } from './cardList.js';
 export const boardgames = [];
 
 const BASE_URL = 'http://127.0.0.1:5001';
@@ -60,6 +60,43 @@ export async function addGame(game) {
 		return data;
 	} catch (error) {
 		console.error('Erro ao adicionar jogo no backend:', error.message || error);
+		throw error;
+	}
+}
+
+/*
+	--------------------------------------------------------------------------------------
+	Função para deletar um jogo de tabuleiro do servidor via requisição DELETE
+	--------------------------------------------------------------------------------------
+*/
+
+export async function deleteGame(id) {
+	const url = `${BASE_URL}/boardgame/${id}`;
+
+	try {
+		const response = await fetch(url, {
+			method: 'delete',
+		});
+
+		if (!response.ok) {
+			const errorMessage = await response.text();
+
+			throw new Error(
+				JSON.parse(errorMessage).message ||
+					'Erro desconhecido ao deletar o jogo'
+			);
+		}
+
+		const data = await response.json();
+		boardgames.splice(
+			boardgames.findIndex((game) => game.id === id),
+			1
+		);
+		renderGamesList(boardgames);
+
+		return data;
+	} catch (error) {
+		console.error('Erro ao deletar jogo no backend:', error.message || error);
 		throw error;
 	}
 }

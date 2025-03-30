@@ -1,6 +1,6 @@
 import { updateHeaderButtonsVisibility } from './header.js';
 import { updateChooseGameButtonState, setRandomGame } from './chooseGame.js';
-import { renderGamesList } from './gamesList.js';
+import { renderGamesList } from './cardList.js';
 import {
 	allGames,
 	setAvailableGames,

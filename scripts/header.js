@@ -1,6 +1,6 @@
 import { hideElement, showElement } from './scripts.js';
 import { updateChooseGameButtonState, setRandomGame } from './chooseGame.js';
-import { renderGamesList } from './gamesList.js';
+import { renderGamesList } from './cardList.js';
 import {
 	removeAllActiveClass,
 	setChosenPlayersNumber,
@@ -46,12 +46,6 @@ export function updateHeaderButtonsVisibility() {
 	const shouldShowHeaderButtons = hasUnavailableGames || !!chosenPlayersNumber;
 	const shouldShowSeeUnavailableGamesButton = hasUnavailableGames;
 	const shouldShowResetButton = hasUnavailableGames || !!chosenPlayersNumber;
-
-	console.log('hasUnavailableGames:', hasUnavailableGames);
-	console.log('chosenPlayersNumber:', chosenPlayersNumber);
-	console.log('shouldShowHeaderButtons:', shouldShowHeaderButtons);	
-	console.log('shouldShowSeeUnavailableGamesButton:', shouldShowSeeUnavailableGamesButton);
-	console.log('shouldShowResetButton:', shouldShowResetButton);
 
 	if (shouldShowHeaderButtons) {
 		showElement(headerButtons);
