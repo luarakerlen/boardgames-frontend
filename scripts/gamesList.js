@@ -1,4 +1,5 @@
 import { showElement, hideElement } from './scripts.js';
+import { updateHeaderButtonsVisibility } from './header.js';
 import {
 	availableGames,
 	unavailableGames,
@@ -174,18 +175,6 @@ export function renderGamesList() {
 	});
 
 	updateHeaderButtonsVisibility();
-}
-
-function updateHeaderButtonsVisibility() {
-	const headerButtons = document.getElementById('headerButtons');
-	const hasUnavailableGames = unavailableGames.length > 0;
-	const shouldShowHeaderButtons = hasUnavailableGames;
-
-	if (shouldShowHeaderButtons) {
-		showElement(headerButtons);
-	} else {
-		hideElement(headerButtons);
-	}
 }
 
 renderGamesList();
