@@ -88,6 +88,13 @@ Este projeto utiliza apenas **HTML**, **CSS** e **JavaScript**. Não é necessá
 
 ---
 
+## Deploy
+A aplicação está disponível online no seguinte link:
+
+🔗 [Boardgames Frontend - Deploy na Vercel](https://boardgames-frontend-three.vercel.app/)
+
+---
+
 ## Observações
 
 - O backend utilizado para as chamadas deste projeto pode ser encontrado no repositório: [boardgames-backend](https://github.com/luarakerlen/boardgames-backend).
