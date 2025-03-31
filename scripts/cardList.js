@@ -76,7 +76,7 @@ function renderGameCard(game, list, isAvailable) {
 
 	// Cria o container dos botões
 	const buttonContainer = document.createElement('div');
-	buttonContainer.classList.add('cardButtonContainer');
+	buttonContainer.classList.add('cardButtonsContainer');
 	buttonContainer.appendChild(deleteButton);
 	buttonContainer.appendChild(availabilityButton);
 
