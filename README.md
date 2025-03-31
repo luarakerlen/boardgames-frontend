@@ -7,11 +7,14 @@ Esse é a parte do **frontend**. O **backend** utilizado nas chamadas deste proj
 ---
 
 ## Índice
-1. [Descrição do Projeto](#descrição-do-projeto)
-2. [Funcionalidades](#funcionalidades)
-3. [Como Executar](#como-executar)
-4. [Estrutura do Projeto](#estrutura-do-projeto)
-5. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Descrição do Projeto](#descrição-do-projeto)
+- [Funcionalidades](#funcionalidades)
+- [Como Executar](#como-executar)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Deploy](#deploy)
+- [Observações](#observações)
+- [Autora](#👩🏽‍💻-autora)
 
 ---
 
