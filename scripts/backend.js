@@ -111,7 +111,6 @@ function convertAPIResponseToGameObject(game) {
 		minPlayers: game.min_players,
 		maxPlayers: game.max_players,
 		image: game.image_url || defaultImage,
-		description: game.description ?? null,
 		ludopediaURL:
 			game.ludopedia_url ||
 			`https://ludopedia.com.br/search?search=${game.name}`,
