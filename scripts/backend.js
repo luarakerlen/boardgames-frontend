@@ -71,7 +71,7 @@ export async function addGame(game) {
 */
 
 export async function deleteGame(id) {
-	const url = `${BASE_URL}/boardgame/${id}`;
+	const url = `${BASE_URL}/boardgame?id=${id}`;
 
 	try {
 		const response = await fetch(url, {
