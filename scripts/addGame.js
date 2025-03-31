@@ -7,6 +7,7 @@ export const gameNameInput = document.querySelector('#gameName');
 export const gameMinPlayersInput = document.querySelector('#gameMinPlayers');
 export const gameMaxPlayersInput = document.querySelector('#gameMaxPlayers');
 export const gameImageInput = document.querySelector('#gameImage');
+export const gameLudopediaInput = document.querySelector('#gameLudopedia');
 
 function isAddButtonDisabled() {
 	return (
@@ -24,6 +25,7 @@ async function handleAddGame(event) {
 	const minPlayers = gameMinPlayersInput.value.trim();
 	const maxPlayers = gameMaxPlayersInput.value.trim();
 	const imageUrl = gameImageInput.value.trim();
+	const ludopediaUrl = gameLudopediaInput.value.trim();
 
 	// Adiciona os valores ao FormData
 	const formData = new FormData();
@@ -31,6 +33,7 @@ async function handleAddGame(event) {
 	formData.append('min_players', minPlayers);
 	formData.append('max_players', maxPlayers);
 	formData.append('image_url', imageUrl);
+	formData.append('ludopedia_url', ludopediaUrl);
 
 	try {
 		await addGame(formData);

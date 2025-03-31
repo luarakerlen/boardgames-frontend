@@ -83,10 +83,12 @@
 			<section id="chosenGameSection" class="chosenGameContainer hidden">
 				<h2 class="chosenGameTitle">Jogo escolhido</h2>
 				<div class="cardContainer">
-					<button class="cardOverlay">
-						<span class="eyeIcon"><i class="fa-solid fa-eye"></i></span>
-						<span class="seeMore">Ver mais informações</span>
-					</button>
+					<a id="chosenGameLudopediaLink" class="cardOverlay">
+						<span class="eyeIcon"
+							><i class="fa-solid fa-arrow-up-right-from-square"></i
+						></span>
+						<span class="seeMore">Ir para Ludopédia</span>
+					</a>
 					<div class="cardHeader">
 						<h3 id="chosenGameTitle" class="cardTitle"></h3>
 					</div>
@@ -151,6 +153,11 @@
 						<div class="inputContainer">
 							<input type="url" id="gameImage" placeholder=" " />
 							<label for="gameImage">Imagem (URL):</label>
+						</div>
+
+						<div class="inputContainer">
+							<input type="url" id="gameLudopedia" placeholder=" " />
+							<label for="gameLudopedia">Ludopédia (URL):</label>
 						</div>
 
 						<div class="buttonsContainer">

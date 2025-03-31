@@ -20,12 +20,15 @@ function renderChosenGameCard() {
 	const title = document.getElementById('chosenGameTitle');
 	const image = document.getElementById('chosenGameImage');
 	const description = document.getElementById('chosenGameDescription');
+	const ludopedia = document.getElementById('chosenGameLudopediaLink');
 
 	if (randomGame) {
 		title.textContent = randomGame.name;
 		image.src = randomGame.image;
 		image.alt = randomGame.name;
 		description.textContent = `Jogadores: ${randomGame.minPlayers} a ${randomGame.maxPlayers}`;
+		ludopedia.href = randomGame.ludopediaURL;
+		ludopedia.target = '_blank';
 	}
 }
 
