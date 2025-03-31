@@ -2,12 +2,13 @@
 
 Este projeto foi desenvolvido como parte do Projeto MVP do curso de Pós-graduação em Engenharia de Software da PUC-Rio, na Sprint de Desenvolvimento Fullstack Básico.
 
-Esse é a parte do **frontend**. O **backend** utilizado nas chamadas deste projeto pode ser encontrado neste link: [boardgames-backend](https://github.com/luarakerlen/boardgames-backend).
+Este projeto é uma aplicação frontend que permite gerenciar uma coleção de jogos de tabuleiro. O usuário pode adicionar, visualizar, deletar e gerenciar a disponibilidade dos jogos, além de pedir ao programa para escolher um jogo aleatoriamente com base na quantidade de jogadores selecionada.
+
+Esse é a parte do **frontend** do projeto. O **backend** utilizado nas chamadas deste projeto pode ser encontrado neste link: [boardgames-backend](https://github.com/luarakerlen/boardgames-backend).
 
 ---
 
 ## Índice
-- [Descrição do Projeto](#descrição-do-projeto)
 - [Funcionalidades](#funcionalidades)
 - [Como Executar](#como-executar)
 - [Estrutura do Projeto](#estrutura-do-projeto)
@@ -15,12 +16,6 @@ Esse é a parte do **frontend**. O **backend** utilizado nas chamadas deste proj
 - [Deploy](#deploy)
 - [Observações](#observações)
 - [Autora](#👩🏽‍💻-autora)
-
----
-
-## Descrição do Projeto
-
-Este projeto é uma aplicação frontend que permite gerenciar uma coleção de jogos de tabuleiro. O usuário pode adicionar, visualizar, deletar e gerenciar a disponibilidade dos jogos, além de pedir ao programa para escolher um jogo aleatoriamente com base na quantidade de jogadores selecionada.
 
 ---
 
