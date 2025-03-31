@@ -88,12 +88,6 @@ export async function deleteGame(id) {
 		}
 
 		const data = await response.json();
-		boardgames.splice(
-			boardgames.findIndex((game) => game.id === id),
-			1
-		);
-		renderGamesList(boardgames);
-
 		return data;
 	} catch (error) {
 		console.error('Erro ao deletar jogo no backend:', error.message || error);

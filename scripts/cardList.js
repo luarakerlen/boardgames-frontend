@@ -177,6 +177,8 @@ export function handleDeleteGameClick(game) {
 					)
 				);
 
+				renderGamesList();
+
 				Swal.fire({
 					title: 'Excluído!',
 					html: `O jogo <strong>${game.name}</strong> foi removido.`,
