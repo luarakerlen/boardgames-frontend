@@ -6,6 +6,8 @@ import {
 	unavailableGames,
 	setAvailableGames,
 	setUnavailableGames,
+	setAllGames,
+	allGames,
 } from './boardgames.js';
 
 const unavailableGamesSection = document.getElementById(
@@ -168,6 +170,7 @@ export function handleDeleteGameClick(game) {
 			try {
 				await deleteGame(game.id);
 
+				// Atualiza a lista de jogos
 				setAvailableGames(
 					availableGames.filter((availableGame) => availableGame.id !== game.id)
 				);
@@ -176,6 +179,7 @@ export function handleDeleteGameClick(game) {
 						(unavailableGame) => unavailableGame.id !== game.id
 					)
 				);
+				setAllGames(allGames.filter((allGame) => allGame.id !== game.id));
 
 				renderGamesList();
 

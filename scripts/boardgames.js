@@ -1,6 +1,9 @@
 import { boardgames } from './backend.js';
 
-export const allGames = boardgames;
+export let allGames = boardgames;
+export function setAllGames(games) {
+	allGames = games;
+}
 
 export let availableGames = allGames;
 export function setAvailableGames(games) {

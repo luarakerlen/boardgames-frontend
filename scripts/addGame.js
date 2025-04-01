@@ -1,5 +1,15 @@
 import { closeAddGameModal } from './modal.js';
-import { addGame } from './backend.js';
+import { addGame, defaultImage, defaultLudopediaUrl } from './backend.js';
+import { chosenPlayersNumber } from './playersNumber.js';
+import { renderGamesList } from './cardList.js';
+import {
+	allGames,
+	setAllGames,
+	availableGames,
+	unavailableGames,
+	setAvailableGames,
+	setUnavailableGames,
+} from './boardgames.js';
 
 const addGameButton = document.getElementById('addGameButton');
 
@@ -38,6 +48,32 @@ async function handleAddGame(event) {
 	try {
 		await addGame(formData);
 
+		// atualiza a lista de jogos
+		const game = {
+			name,
+			minPlayers: parseInt(minPlayers),
+			maxPlayers: parseInt(maxPlayers),
+			imageUrl: !!imageUrl ? imageUrl : defaultImage,
+			ludopediaUrl: !!ludopediaUrl
+				? ludopediaUrl
+				: `${defaultLudopediaUrl}${name}`,
+		};
+
+		setAllGames([...allGames, game]);
+
+		if (
+			!!chosenPlayersNumber &&
+			(game.minPlayers > chosenPlayersNumber ||
+				game.maxPlayers < chosenPlayersNumber)
+		) {
+			setUnavailableGames([...unavailableGames, game]);
+		} else {
+			setAvailableGames([...availableGames, game]);
+		}
+
+		renderGamesList();
+		closeAddGameModal();
+
 		Swal.fire({
 			title: 'Sucesso!',
 			text: 'O jogo foi adicionado à coleção.',
@@ -45,8 +81,6 @@ async function handleAddGame(event) {
 			confirmButtonText: 'OK',
 			confirmButtonColor: '#007bff',
 		});
-
-		closeAddGameModal();
 	} catch (error) {
 		console.error('Erro ao adicionar jogo:', error.message || error);
 		Swal.fire({
