@@ -4,6 +4,7 @@ import {
 	gameMinPlayersInput,
 	gameMaxPlayersInput,
 	gameImageInput,
+	gameLudopediaInput,
 	toggleAddButton,
 } from './addGame.js';
 
@@ -25,6 +26,7 @@ export function closeAddGameModal() {
 	gameMinPlayersInput.value = null;
 	gameMaxPlayersInput.value = null;
 	gameImageInput.value = null;
+	gameLudopediaInput.value = null;
 
 	toggleAddButton();
 }
