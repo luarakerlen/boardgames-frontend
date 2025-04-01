@@ -86,7 +86,7 @@ function renderGameCard(game, list, isAvailable) {
 	// Cria a imagem do jogo
 	const image = document.createElement('img');
 	image.classList.add('cardImage');
-	image.src = game.image;
+	image.src = game.imageUrl;
 	image.alt = game.name;
 
 	// Cria a descrição do jogo

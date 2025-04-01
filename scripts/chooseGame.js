@@ -24,10 +24,10 @@ function renderChosenGameCard() {
 
 	if (randomGame) {
 		title.textContent = randomGame.name;
-		image.src = randomGame.image;
+		image.src = randomGame.imageUrl;
 		image.alt = randomGame.name;
 		description.textContent = `Jogadores: ${randomGame.minPlayers} a ${randomGame.maxPlayers}`;
-		ludopedia.href = randomGame.ludopediaURL;
+		ludopedia.href = randomGame.ludopediaUrl;
 		ludopedia.target = '_blank';
 	}
 }
