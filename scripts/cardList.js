@@ -1,5 +1,5 @@
 import { deleteGame } from './backend.js';
-import { showElement, hideElement } from './scripts.js';
+import { showElement, hideElement } from './utils.js';
 import { updateHeaderButtonsVisibility } from './header.js';
 import {
 	availableGames,

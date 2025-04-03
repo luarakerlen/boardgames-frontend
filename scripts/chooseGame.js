@@ -1,4 +1,4 @@
-import { showElement, hideElement } from './scripts.js';
+import { showElement, hideElement } from './utils.js';
 import { availableGames } from './boardgames.js';
 import { chosenPlayersNumber } from './playersNumber.js';
 

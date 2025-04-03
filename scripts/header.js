@@ -1,4 +1,4 @@
-import { hideElement, showElement } from './scripts.js';
+import { hideElement, showElement } from './utils.js';
 import { updateChooseGameButtonState, setRandomGame } from './chooseGame.js';
 import { renderGamesList } from './cardList.js';
 import {
