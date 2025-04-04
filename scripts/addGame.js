@@ -46,29 +46,19 @@ async function handleAddGame(event) {
 	formData.append('ludopedia_url', ludopediaUrl);
 
 	try {
-		await addGame(formData);
+		const newGame = await addGame(formData);
 
 		// atualiza a lista de jogos
-		const game = {
-			name,
-			minPlayers: parseInt(minPlayers),
-			maxPlayers: parseInt(maxPlayers),
-			imageUrl: !!imageUrl ? imageUrl : defaultImage,
-			ludopediaUrl: !!ludopediaUrl
-				? ludopediaUrl
-				: `${defaultLudopediaUrl}${name}`,
-		};
-
-		setAllGames([...allGames, game]);
+		setAllGames([...allGames, newGame]);
 
 		if (
 			!!chosenPlayersNumber &&
-			(game.minPlayers > chosenPlayersNumber ||
-				game.maxPlayers < chosenPlayersNumber)
+			(newGame.minPlayers > chosenPlayersNumber ||
+				newGame.maxPlayers < chosenPlayersNumber)
 		) {
-			setUnavailableGames([...unavailableGames, game]);
+			setUnavailableGames([...unavailableGames, newGame]);
 		} else {
-			setAvailableGames([...availableGames, game]);
+			setAvailableGames([...availableGames, newGame]);
 		}
 
 		renderGamesList();

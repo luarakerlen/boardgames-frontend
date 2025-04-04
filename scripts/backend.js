@@ -52,6 +52,11 @@ export async function addGame(game) {
 					'Erro desconhecido ao adicionar o jogo'
 			);
 		}
+
+		const data = await response.json();
+		const newGame = convertAPIResponseToGameObject(data);
+
+		return newGame;
 	} catch (error) {
 		console.error('Erro ao adicionar jogo no backend:', error.message || error);
 		throw error;
