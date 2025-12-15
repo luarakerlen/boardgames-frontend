@@ -208,9 +208,7 @@ function renderGameCard(game, list, isAvailable) {
 	title.textContent = game.name;
 
 	// Define as classes do botão e do ícone de acordo com a disponibilidade do jogo
-	const classButton = isAvailable
-		? 'cardButtonIconAvailable'
-		: 'cardButtonIconUnavailable';
+	const classButton = isAvailable ? 'cardButtonIconRed' : 'cardButtonIconBlue';
 	const classIcon = isAvailable ? 'fa-ban' : 'fa-square-plus';
 	const classTypeIcon = isAvailable ? 'fa-solid' : 'fa-regular';
 
@@ -234,11 +232,7 @@ function renderGameCard(game, list, isAvailable) {
 
 	// Cria o botão de deletar
 	const deleteButton = document.createElement('button');
-	deleteButton.classList.add(
-		'cardButton',
-		'tooltip',
-		'cardButtonIconAvailable'
-	);
+	deleteButton.classList.add('cardButton', 'tooltip', 'cardButtonIconRed');
 	deleteButton.appendChild(deleteIcon);
 	deleteButton.appendChild(deleteTooltip);
 	deleteButton.addEventListener('click', () => {
