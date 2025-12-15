@@ -78,10 +78,10 @@ docker build -t boardgames-frontend .
 Após construir a imagem, execute o container com o seguinte comando:
 
 ```bash
-docker run -p 80:80 boardgames-frontend
+docker run -p 8080:80 boardgames-frontend
 ```
 
-O frontend estará disponível em `http://localhost:80`.
+O frontend estará disponível em `http://localhost:8080`.
 
 ---
 
