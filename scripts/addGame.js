@@ -1,5 +1,5 @@
-import { closeAddGameModal } from './modal.js';
-import { addGame, defaultImage, defaultLudopediaUrl } from './backend.js';
+import { closeAddGameModal, currentGameId } from './modal.js';
+import { addGame, updateGame } from './backend.js';
 import { chosenPlayersNumber } from './playersNumber.js';
 import { renderGamesList } from './cardList.js';
 import {
@@ -99,4 +99,64 @@ gameMaxPlayersInput.addEventListener('input', toggleAddButton);
 
 toggleAddButton();
 
+async function handleEditGame(event) {
+	event.preventDefault();
+
+	// Captura os valores dos inputs
+	const game = {
+		name: gameNameInput.value.trim(),
+		min_players: parseInt(gameMinPlayersInput.value),
+		max_players: parseInt(gameMaxPlayersInput.value),
+		image_url: gameImageInput.value.trim() || null,
+		ludopedia_url: gameLudopediaInput.value.trim() || null,
+	};
+
+	// Adiciona os valores ao FormData
+	const formData = new FormData();
+	Object.entries(game).forEach(([key, value]) => {
+		if (value !== null && value !== undefined) {
+			formData.append(key, value);
+		}
+	});
+
+	try {
+		const editedGame = await updateGame(currentGameId, formData);
+		console.log('Edited game:', editedGame);
+
+		// atualiza a lista de jogos
+		setAllGames(
+			allGames.map((game) => (game.id === currentGameId ? editedGame : game))
+		);
+		setAvailableGames(
+			availableGames.map((game) =>
+				game.id === currentGameId ? editedGame : game
+			)
+		);
+		setUnavailableGames(
+			unavailableGames.map((game) =>
+				game.id === currentGameId ? editedGame : game
+			)
+		);
+
+		closeAddGameModal();
+		renderGamesList();
+
+		Swal.fire({
+			title: 'Sucesso!',
+			text: 'O jogo foi editado com sucesso!',
+			icon: 'success',
+			confirmButtonText: 'OK',
+			confirmButtonColor: '#007bff',
+		});
+	} catch (error) {
+		console.error('Erro ao editar jogo:', error.message || error);
+		Swal.fire({
+			icon: 'error',
+			title: 'Erro ao editar jogo',
+			text: error.message || 'Tente novamente mais tarde.',
+		});
+	}
+}
+
 window.handleAddGame = handleAddGame;
+window.handleEditGame = handleEditGame;

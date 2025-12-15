@@ -1,6 +1,6 @@
 # Jogos de Tabuleiro
 
-Este projeto foi desenvolvido como parte do Projeto MVP do curso de Pós-graduação em Engenharia de Software da PUC-Rio, na Sprint de Desenvolvimento Fullstack Básico.
+Este projeto foi desenvolvido como parte do Projeto MVP do curso de Pós-graduação em Engenharia de Software da PUC-Rio, na Sprint de Desenvolvimento Fullstack Básico e, posteriormente, foram adicionadas novas funcionalidades para a Sprint de Arquitetura de Software.
 
 Este projeto é uma aplicação frontend que permite gerenciar uma coleção de jogos de tabuleiro. O usuário pode adicionar, visualizar, deletar e gerenciar a disponibilidade dos jogos, além de pedir ao programa para escolher um jogo aleatoriamente com base na quantidade de jogadores selecionada.
 
@@ -32,6 +32,7 @@ Esse é a parte do **frontend** do projeto. O **backend** utilizado nas chamadas
 - **Visualizar Jogos**: Os jogos adicionados são exibidos em listas separadas, com base na quantidade de jogadores selecionada e/ou nas preferências do usuário:
   - Jogos disponíveis
   - Jogos indisponíveis
+- **Deletar jogos**: Permite remover jogos da lista.
 - **Escolher Jogo Aleatório**: O programa escolhe aleatoriamente um jogo disponível com base na quantidade de jogadores selecionada e/ou nas preferências do usuário.
 - **Gerenciar Disponibilidade**:
   - Marcar jogos como indisponíveis manualmente.
@@ -45,6 +46,10 @@ Esse é a parte do **frontend** do projeto. O **backend** utilizado nas chamadas
 - **Interação com Ludopédia**:
   - No card do jogo escolhido aleatoriamente, o usuário pode passar o mouse e navegar para a página do jogo na Ludopédia.
 
+### Funcionalidades adicionadas na Sprint de Arquitetura de Software
+
+- **Editar jogos**: Permite atualizar informações de jogos existentes.
+
 ---
 
 ## Como Executar
@@ -57,6 +62,26 @@ Este projeto utiliza apenas **HTML**, **CSS** e **JavaScript**. Não é necessá
    ```
 
 2. Abra o arquivo `index.html` no navegador.
+
+---
+
+## Como executar através do Docker
+
+Certifique-se de ter o [Docker](https://docs.docker.com/engine/install/) instalado e em execução em sua máquina.
+
+Execute como administrador o seguinte comando para construir a imagem Docker:
+
+```bash
+docker build -t boardgames-frontend .
+```
+
+Após construir a imagem, execute o container com o seguinte comando:
+
+```bash
+docker run -p 80:80 boardgames-frontend
+```
+
+O frontend estará disponível em `http://localhost:80`.
 
 ---
 

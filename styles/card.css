@@ -84,12 +84,12 @@
 	color: #dddddd;
 }
 
-.cardButtonIconAvailable:hover {
+.cardButtonIconRed:hover {
 	color: red;
 	transition: all 0.3s;
 }
 
-.cardButtonIconUnavailable:hover {
+.cardButtonIconBlue:hover {
 	color: #027df7;
 	transition: all 0.3s;
 }

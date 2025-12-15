@@ -1,6 +1,7 @@
 import { deleteGame } from './backend.js';
 import { showElement, hideElement } from './utils.js';
 import { updateHeaderButtonsVisibility } from './header.js';
+import { openEditGameModal } from './modal.js';
 import {
 	availableGames,
 	unavailableGames,
@@ -27,15 +28,16 @@ function renderGameCard(game, list, isAvailable) {
 	title.textContent = game.name;
 
 	// Define as classes do botão e do ícone de acordo com a disponibilidade do jogo
-	const classButton = isAvailable
-		? 'cardButtonIconAvailable'
-		: 'cardButtonIconUnavailable';
+	const classButton = isAvailable ? 'cardButtonIconRed' : 'cardButtonIconBlue';
 	const classIcon = isAvailable ? 'fa-ban' : 'fa-square-plus';
 	const classTypeIcon = isAvailable ? 'fa-solid' : 'fa-regular';
 
 	// Cria os ícones dos botões
 	const deleteIcon = document.createElement('i');
 	deleteIcon.classList.add('fa-solid', 'fa-trash', 'fa-xl');
+
+	const editIcon = document.createElement('i');
+	editIcon.classList.add('fa-solid', 'fa-pen', 'fa-xl');
 
 	const availabilityIcon = document.createElement('i');
 	availabilityIcon.classList.add('fa-xl', classIcon, classTypeIcon);
@@ -45,6 +47,10 @@ function renderGameCard(game, list, isAvailable) {
 	deleteTooltip.classList.add('tooltipText');
 	deleteTooltip.textContent = 'Deletar jogo';
 
+	const editTooltip = document.createElement('span');
+	editTooltip.classList.add('tooltipText');
+	editTooltip.textContent = 'Editar jogo';
+
 	const availabilityTooltip = document.createElement('span');
 	availabilityTooltip.classList.add('tooltipText');
 	availabilityTooltip.textContent = isAvailable
@@ -53,15 +59,20 @@ function renderGameCard(game, list, isAvailable) {
 
 	// Cria o botão de deletar
 	const deleteButton = document.createElement('button');
-	deleteButton.classList.add(
-		'cardButton',
-		'tooltip',
-		'cardButtonIconAvailable'
-	);
+	deleteButton.classList.add('cardButton', 'tooltip', 'cardButtonIconRed');
 	deleteButton.appendChild(deleteIcon);
 	deleteButton.appendChild(deleteTooltip);
 	deleteButton.addEventListener('click', () => {
 		handleDeleteGameClick(game);
+	});
+
+	// Cria o botão de editar
+	const editButton = document.createElement('button');
+	editButton.classList.add('cardButton', 'tooltip', 'cardButtonIconBlue');
+	editButton.appendChild(editIcon);
+	editButton.appendChild(editTooltip);
+	editButton.addEventListener('click', () => {
+		openEditGameModal(game);
 	});
 
 	// Cria o botão de tornar disponível ou indisponível
@@ -77,6 +88,7 @@ function renderGameCard(game, list, isAvailable) {
 	const buttonContainer = document.createElement('div');
 	buttonContainer.classList.add('cardButtonsContainer');
 	buttonContainer.appendChild(deleteButton);
+	buttonContainer.appendChild(editButton);
 	buttonContainer.appendChild(availabilityButton);
 
 	// Cria o header da card
