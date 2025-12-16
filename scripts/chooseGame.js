@@ -3,20 +3,45 @@ import { availableGames } from './boardgames.js';
 import { chosenPlayersNumber } from './playersNumber.js';
 
 const chosenGameSection = document.getElementById('chosenGameSection');
+const randomGameSection = document.getElementById('randomGameSection');
+const AIExplanationSection = document.getElementById('AIExplanationSection');
+const AIDivider = document.getElementById('AIDivider');
+const AIChosenGameTitle = document.getElementById('AIChosenGameTitle');
+const AIExplanationText = document.getElementById('AIExplanationText');
 
 let randomGame = null;
 
-export function setRandomGame(game) {
+export function setRandomGame({ game, isFromAI, aiSuggestion = {} }) {
 	randomGame = game;
+	hideElement(chosenGameSection);
+	hideElement(AIExplanationSection);
+	hideElement(randomGameSection);
 
-	if (!game) {
-		hideElement(chosenGameSection);
-	} else {
+	if (isFromAI) {
+		if (game) {
+			showElement(randomGameSection);
+			showElement(AIDivider);
+			AIChosenGameTitle.textContent = '';
+		} else {
+			randomGame = null;
+			hideElement(AIDivider);
+			AIChosenGameTitle.textContent = aiSuggestion.name;
+		}
+		AIExplanationText.textContent = aiSuggestion.explanation;
 		showElement(chosenGameSection);
+		showElement(AIExplanationSection);
+	} else {
+		hideElement(AIExplanationSection);
+		if (game) {
+			showElement(chosenGameSection);
+			showElement(randomGameSection);
+		} else {
+			hideElement(chosenGameSection);
+		}
 	}
 }
 
-function renderChosenGameCard() {
+export function renderChosenGameCard() {
 	const title = document.getElementById('chosenGameTitle');
 	const image = document.getElementById('chosenGameImage');
 	const description = document.getElementById('chosenGameDescription');
@@ -34,7 +59,7 @@ function renderChosenGameCard() {
 
 function chooseRandomGame() {
 	const randomIndex = Math.floor(Math.random() * availableGames.length);
-	setRandomGame(availableGames[randomIndex]);
+	setRandomGame({ game: availableGames[randomIndex], isFromAI: false });
 	renderChosenGameCard();
 }
 

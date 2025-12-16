@@ -28,7 +28,7 @@ function handleReset() {
 	setChosenPlayersNumber(null);
 	setAvailableGames(allGames);
 	setUnavailableGames([]);
-	setRandomGame(null);
+	setRandomGame({ game: null, isFromAI: false });
 	updateHeaderButtonsVisibility();
 	updateChooseGameButtonState();
 	removeAllActiveClass();

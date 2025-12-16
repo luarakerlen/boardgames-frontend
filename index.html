@@ -102,17 +102,29 @@
 			<section id="chosenGameSection" class="chosenGameContainer hidden">
 				<h2 class="chosenGameTitle">Jogo escolhido</h2>
 				<div class="cardContainer">
-					<a id="chosenGameLudopediaLink" class="cardOverlay">
-						<span class="eyeIcon"
-							><i class="fa-solid fa-arrow-up-right-from-square"></i
-						></span>
-						<span class="seeMore">Ver na Ludopédia</span>
-					</a>
-					<div class="cardHeader">
-						<h3 id="chosenGameTitle" class="cardTitle"></h3>
+					<div id="randomGameSection" class="randomGameContainer">
+						<a id="chosenGameLudopediaLink" class="cardOverlay">
+							<span class="eyeIcon"
+								><i class="fa-solid fa-arrow-up-right-from-square"></i
+							></span>
+							<span class="seeMore">Ver na Ludopédia</span>
+						</a>
+						<div class="cardHeader">
+							<h3 id="chosenGameTitle" class="cardTitle"></h3>
+						</div>
+						<img id="chosenGameImage" class="cardImage" />
+						<p id="chosenGameDescription" class="cardDescription"></p>
 					</div>
-					<img id="chosenGameImage" class="cardImage" />
-					<p id="chosenGameDescription" class="cardDescription"></p>
+
+					<!-- SUGESTÃO DA IA -->
+					<div id="AIExplanationSection" class="AIExplanationContainer hidden">
+						<div id="AIDivider" class="divider"></div>
+						<h2 class="AIExplanationTitle">
+							<i class="fi fi-sc-sparkles"></i> Escolha da IA
+						</h2>
+						<h3 id="AIChosenGameTitle" class="cardTitle"></h3>
+						<p id="AIExplanationText" class="AIExplanationText"></p>
+					</div>
 				</div>
 			</section>
 

@@ -59,7 +59,7 @@ function handlePlayersNumber(number) {
 
 	// Filtrando os jogos disponíveis para a quantidade de jogadores escolhida
 	filterGamesByPlayers(allGames);
-	setRandomGame(null);
+	setRandomGame({ game: null, isFromAI: false });
 
 	updateHeaderButtonsVisibility();
 	updateChooseGameButtonState();

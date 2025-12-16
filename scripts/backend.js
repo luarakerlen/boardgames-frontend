@@ -99,7 +99,6 @@ export async function deleteGame(id) {
 
 export async function updateGame(id, game) {
 	const url = `${BASE_URL}/boardgame?id=${id}`;
-	console.log('updateGame called with id:', id, 'and game:', game);
 
 	try {
 		const response = await fetch(url, {
