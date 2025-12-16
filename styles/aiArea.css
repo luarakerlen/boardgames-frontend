@@ -1,0 +1,33 @@
+.aiGameForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#aiGameInput {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+#aiGameInput:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+#aiGameInput:focus {
+  outline: none;
+  border-color: #9b6fed;
+  box-shadow: 0 0 0 2px rgba(155, 111, 237, 0.25);
+}
+
+#aiGameInput::placeholder {
+  color: #999;
+  font-style: italic;
+  opacity: 0.5;
+}

@@ -39,25 +39,41 @@ function chooseRandomGame() {
 }
 
 export function updateChooseGameButtonState() {
-	const button = document.getElementById('randomGameButton');
-	const text = document.getElementById('randomGameButtonText');
-	const textHelp = document.getElementById('randomGameButtonTextHelp');
+	const buttons = document.querySelectorAll('.chooseGameButton');
+	const randomGameButton = document.getElementById('randomGameButton');
+	const AIGameButton = document.getElementById('AIGameButton');
+
+	const randomText = document.getElementById('randomGameButtonText');
+
+	const textsHelp = document.querySelectorAll('.chooseGameButtonTextHelp');
+	const randomTextHelp = document.getElementById('randomGameButtonTextHelp');
+	const AITextHelp = document.getElementById('AIGameButtonTextHelp');
+
+	const AIInput = document.getElementById('aiGameInput');
+
+	randomText.textContent = 'Escolher um jogo aleatoriamente';
+	textsHelp.forEach(
+		(el) => (el.textContent = '(escolha a quantidade de jogadores primeiro)')
+	);
 
 	if (!!chosenPlayersNumber && availableGames.length > 0) {
-		button.disabled = false; // Habilita o botão
-		textHelp.style.display = 'none'; // Esconde o texto de apoio
+		buttons.forEach((btn) => (btn.disabled = false)); // Habilita os botões
+		textsHelp.forEach((el) => (el.style.display = 'none')); // Esconde os textos de apoio
+		AIInput.disabled = false; // Habilita o input de IA
+	} else if (!!chosenPlayersNumber && availableGames.length === 0) {
+		AIGameButton.disabled = false; // Habilita o botão de IA
+		AITextHelp.style.display = 'none'; // Esconde o texto de apoio da IA
+		AIInput.disabled = false; // Habilita o input de IA
 
-		text.textContent = 'Escolher um jogo aleatoriamente';
-		textHelp.textContent = '(escolha a quantidade de jogadores primeiro)';
-	} else {
-		button.disabled = true; // Desabilita o botão
-		textHelp.style.display = 'block'; // Exibe o texto de apoio
-	}
-
-	if (availableGames.length === 0) {
-		text.textContent =
+		randomGameButton.disabled = true; // Desabilita o botão de escolher aleatoriamente
+		randomText.textContent =
 			'Nenhum jogo disponível para o número de jogadores escolhido.';
-		textHelp.textContent = 'Escolha outro número de jogadores.';
+		randomTextHelp.textContent = 'Escolha outro número de jogadores.';
+		randomTextHelp.style.display = 'block';
+	} else {
+		buttons.forEach((btn) => (btn.disabled = true)); // Desabilita os botões
+		textsHelp.forEach((el) => (el.style.display = 'block')); // Exibe os textos de apoio
+		AIInput.disabled = true; // Desabilita o input de IA
 	}
 }
 

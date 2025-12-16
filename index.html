@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="./styles/styles.css" />
 		<link rel="stylesheet" href="./styles/header.css" />
 		<link rel="stylesheet" href="./styles/playersNumber.css" />
+		<link rel="stylesheet" href="./styles/aiArea.css" />
 		<link rel="stylesheet" href="./styles/card.css" />
 		<link rel="stylesheet" href="./styles/tooltip.css" />
 		<link rel="stylesheet" href="./styles/chosenGame.css" />
@@ -25,6 +26,10 @@
 		<!-- SweetAlert2 -->
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<!-- SCRIPT PARA ÍCONES -->
+		<link
+			rel="stylesheet"
+			href="https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-chubby/css/uicons-solid-chubby.css"
+		/>
 		<script
 			src="https://kit.fontawesome.com/ed9338fcbf.js"
 			crossorigin="anonymous"
@@ -55,17 +60,42 @@
 					<ul id="playersList"></ul>
 				</div>
 
-				<button
-					id="randomGameButton"
-					class="chooseGameButton"
-					onclick="chooseRandomGame()"
-					disabled
-				>
-					<spam id="randomGameButtonText">Escolher um jogo aleatoriamente</spam>
-					<p id="randomGameButtonTextHelp">
-						(escolha a quantidade de jogadores primeiro)
-					</p>
-				</button>
+				<div id="mainButtons">
+					<button
+						id="randomGameButton"
+						class="chooseGameButton"
+						onclick="chooseRandomGame()"
+						disabled
+					>
+						<spam id="randomGameButtonText"
+							>Escolher um jogo aleatoriamente</spam
+						>
+						<p id="randomGameButtonTextHelp" class="chooseGameButtonTextHelp">
+							(escolha a quantidade de jogadores primeiro)
+						</p>
+					</button>
+					<form id="aiGameForm" class="aiGameForm">
+						<input
+							id="aiGameInput"
+							disabled
+							placeholder="Digite suas preferências: jogo estratégico, jogo rápido, etc."
+						/>
+						<button
+							id="AIGameButton"
+							class="chooseGameButton"
+							onclick="chooseRandomGame()"
+							disabled
+						>
+							<spam id="AIGameButtonText">
+								<i class="fi fi-sc-sparkles"></i>
+								Pedir sugestão para a IA
+							</spam>
+							<p id="AIGameButtonTextHelp" class="chooseGameButtonTextHelp">
+								(escolha a quantidade de jogadores primeiro)
+							</p>
+						</button>
+					</form>
+				</div>
 			</header>
 
 			<!-- SEÇÃO: JOGO ESCOLHIDO -->

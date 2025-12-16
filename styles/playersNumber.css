@@ -41,16 +41,25 @@
 	background-color: #f7a440;
 }
 
-/* BOTÃO PRINCIPAL */
+/* CONTAINER DOS BOTÕES PRINCIPAIS */
+#mainButtons {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	width: 100%;
+}
+
+/* BOTÕES PRINCIPAIS */
 .chooseGameButton {
-	background-color: #027df7;
+	flex: 1;
+	width: 100%;
 	border-radius: 8px;
-	padding: 3rem 1rem;
 	border: none;
 	cursor: pointer;
 	color: white;
 	font-size: 1.5rem;
 	font-weight: 600;
+	transition: all 0.3s ease;
 }
 
 .chooseGameButton:disabled {
@@ -58,16 +67,41 @@
 	cursor: not-allowed;
 }
 
-.chooseGameButton:hover::not(:disabled) {
-	background-color: #1e7fc7;
-}
-
 .chooseGameButton p {
 	font-size: 1rem;
 	font-weight: 400;
 }
 
+#randomGameButton {
+	padding: 3rem 1rem;
+}
+
+#AIGameButton {
+	padding: 1rem;
+}
+
+#randomGameButton:not(:disabled) {
+	background-color: #027df7;
+}
+
+#AIGameButton:not(:disabled) {
+	background-color: #9b6fed;
+}
+
+#randomGameButton:hover:not(:disabled) {
+	background-color: #1e7fc7;
+}
+
+#AIGameButton:hover:not(:disabled) {
+	background-color: #8a52d3;
+}
+
 @media (max-width: 768px) {
+	#mainButtons {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
 	.chooseGameButton {
 		font-size: 1rem;
 	}
