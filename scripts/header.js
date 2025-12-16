@@ -1,6 +1,7 @@
 import { hideElement, showElement } from './utils.js';
 import { updateChooseGameButtonState, setRandomGame } from './chooseGame.js';
 import { renderGamesList } from './cardList.js';
+import { clearAIInput } from './getAISuggestion.js';
 import {
 	removeAllActiveClass,
 	setChosenPlayersNumber,
@@ -33,6 +34,7 @@ function handleReset() {
 	updateChooseGameButtonState();
 	removeAllActiveClass();
 	renderGamesList();
+	clearAIInput();
 }
 
 export function updateHeaderButtonsVisibility() {

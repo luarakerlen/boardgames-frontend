@@ -9,6 +9,11 @@ import {
 
 const buttons = document.querySelectorAll('.chooseGameButton');
 const AIText = document.getElementById('AIGameButtonText');
+const aiGameInput = document.getElementById('aiGameInput');
+
+export function clearAIInput() {
+	aiGameInput.value = '';
+}
 
 async function handleGetAISuggestion() {
 	const aiGameInput = document.getElementById('aiGameInput');
@@ -29,6 +34,7 @@ async function handleGetAISuggestion() {
 
 			setRandomGame({ game, isFromAI: true, aiSuggestion: result });
 			renderChosenGameCard();
+			clearAIInput();
 		}
 	} catch (error) {
 		console.error('Erro ao obter sugestão da IA:', error);

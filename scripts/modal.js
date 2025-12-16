@@ -34,7 +34,6 @@ export function openEditGameModal(game) {
 	currentGameId = game?.id ?? null;
 	gameModalTitle.textContent = 'Editar jogo';
 	gameModalButton.textContent = 'Salvar alterações';
-	console.log('Editing game:', game);
 
 	// Preencher os campos com os dados do jogo
 	gameNameInput.value = game?.name ?? null;
