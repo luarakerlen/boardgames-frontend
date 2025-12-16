@@ -1,6 +1,6 @@
 import { closeAddGameModal, currentGameId } from './modal.js';
 import { addGame, updateGame } from './backend.js';
-import { chosenPlayersNumber } from './playersNumber.js';
+import { chosenPlayersNumber, filterGamesByPlayers } from './playersNumber.js';
 import { renderGamesList } from './cardList.js';
 import {
 	allGames,
@@ -121,22 +121,14 @@ async function handleEditGame(event) {
 
 	try {
 		const editedGame = await updateGame(currentGameId, formData);
-		console.log('Edited game:', editedGame);
 
 		// atualiza a lista de jogos
-		setAllGames(
-			allGames.map((game) => (game.id === currentGameId ? editedGame : game))
+		const updatedGames = allGames.map((game) =>
+			game.id === currentGameId ? editedGame : game
 		);
-		setAvailableGames(
-			availableGames.map((game) =>
-				game.id === currentGameId ? editedGame : game
-			)
-		);
-		setUnavailableGames(
-			unavailableGames.map((game) =>
-				game.id === currentGameId ? editedGame : game
-			)
-		);
+
+		setAllGames(updatedGames);
+		filterGamesByPlayers(updatedGames);
 
 		closeAddGameModal();
 		renderGamesList();

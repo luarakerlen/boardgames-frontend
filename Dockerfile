@@ -1,6 +1,6 @@
-FROM nginx:alpine
+FROM nginx:latest
 
-# remove config default (opcional, mas recomendado)
+# remove config default
 RUN rm -rf /usr/share/nginx/html/*
 
 # copia SOMENTE os arquivos estáticos

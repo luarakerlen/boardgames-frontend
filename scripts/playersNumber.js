@@ -21,6 +21,30 @@ export function removeAllActiveClass() {
 	});
 }
 
+export function filterGamesByPlayers(games) {
+	let updatedAvailableGames = [];
+	let updatedUnavailableGames = [];
+
+	if (chosenPlayersNumber) {
+		updatedAvailableGames = games.filter(
+			(game) =>
+				game.minPlayers <= chosenPlayersNumber &&
+				game.maxPlayers >= chosenPlayersNumber
+		);
+		updatedUnavailableGames = games.filter(
+			(game) =>
+				game.minPlayers > chosenPlayersNumber ||
+				game.maxPlayers < chosenPlayersNumber
+		);
+	} else {
+		updatedAvailableGames = games;
+		updatedUnavailableGames = [];
+	}
+
+	setAvailableGames(updatedAvailableGames);
+	setUnavailableGames(updatedUnavailableGames);
+}
+
 function handlePlayersNumber(number) {
 	setChosenPlayersNumber(number);
 	removeAllActiveClass();
@@ -34,16 +58,7 @@ function handlePlayersNumber(number) {
 	}
 
 	// Filtrando os jogos disponíveis para a quantidade de jogadores escolhida
-	const availableGames = allGames.filter(
-		(game) => game.minPlayers <= number && game.maxPlayers >= number
-	);
-
-	const unavailableGames = allGames.filter(
-		(game) => game.minPlayers > number || game.maxPlayers < number
-	);
-
-	setAvailableGames(availableGames);
-	setUnavailableGames(unavailableGames);
+	filterGamesByPlayers(allGames);
 	setRandomGame(null);
 
 	updateHeaderButtonsVisibility();
