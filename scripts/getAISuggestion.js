@@ -1,11 +1,21 @@
 import { getAISuggestion } from './backend.js';
 import { chosenPlayersNumber } from './playersNumber.js';
 import { allGames } from './boardgames.js';
-import { setRandomGame, renderChosenGameCard } from './chooseGame.js';
+import {
+	setRandomGame,
+	renderChosenGameCard,
+	updateChooseGameButtonState,
+} from './chooseGame.js';
+
+const buttons = document.querySelectorAll('.chooseGameButton');
+const AIText = document.getElementById('AIGameButtonText');
 
 async function handleGetAISuggestion() {
 	const aiGameInput = document.getElementById('aiGameInput');
 	const userPreferences = aiGameInput.value.trim();
+
+	buttons.forEach((btn) => (btn.disabled = true)); // Desabilita os botões
+	AIText.textContent = 'Obtendo sugestão da IA...';
 
 	try {
 		const result = await getAISuggestion(chosenPlayersNumber, userPreferences);
@@ -29,6 +39,8 @@ async function handleGetAISuggestion() {
 			confirmButtonText: 'OK',
 			confirmButtonColor: '#dc3545',
 		});
+	} finally {
+		updateChooseGameButtonState();
 	}
 }
 
