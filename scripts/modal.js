@@ -34,13 +34,14 @@ export function openEditGameModal(game) {
 	currentGameId = game?.id ?? null;
 	gameModalTitle.textContent = 'Editar jogo';
 	gameModalButton.textContent = 'Salvar alterações';
+	console.log('Editing game:', game);
 
 	// Preencher os campos com os dados do jogo
 	gameNameInput.value = game?.name ?? null;
 	gameMinPlayersInput.value = game?.minPlayers ?? null;
 	gameMaxPlayersInput.value = game?.maxPlayers ?? null;
-	gameImageInput.value = game?.image ?? null;
-	gameLudopediaInput.value = game?.ludopedia ?? null;
+	gameImageInput.value = game?.imageUrl ?? null;
+	gameLudopediaInput.value = game?.ludopediaUrl ?? null;
 
 	showElement(addGameModal);
 	document.body.classList.add('modalOpen');
