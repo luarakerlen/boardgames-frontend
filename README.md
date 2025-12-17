@@ -173,7 +173,7 @@ Para utilizar a API é necessário:
 
 A API do Gemini é acessada exclusivamente pelo backend, por meio da biblioteca oficial do Google, utilizando o método de geração de conteúdo:
 
-- **Método:** `models.generateContent`
+- **Método:** `models.generate_content`
 - **Modelo utilizado:** `gemini-2.5-flash`
 - **Tipo de entrada:** Texto (prompt estruturado)
 - **Tipo de saída:** Texto gerado com recomendação de jogo e explicação
