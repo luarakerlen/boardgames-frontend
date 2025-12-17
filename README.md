@@ -14,6 +14,7 @@ Esse é a parte do **frontend** do projeto. O **backend** utilizado nas chamadas
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Arquitetura da Solução](#arquitetura-da-solução)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Integração com API Externa](#integração-com-api-externa-inteligência-artificial)
 - [Deploy](#deploy)
 - [Observações](#observações)
 - [Autora](#👩🏽‍💻-autora)
@@ -135,6 +136,53 @@ Imagem do modelo arquitetural:
 - **JavaScript**: Lógica e interatividade.
 - **SweetAlert2**: Exibição de alertas personalizados.
 - **Font Awesome**: Ícones para botões e interações.
+
+---
+
+## Integração com API Externa (Inteligência Artificial)
+
+Este projeto utiliza uma **API externa de Inteligência Artificial** para fornecer sugestões de jogos de tabuleiro com base na quantidade de jogadores e nas preferências informadas pelo usuário.
+
+A integração é realizada **indiretamente pelo backend**, mantendo o frontend desacoplado de serviços externos e concentrando as regras de negócio e segurança no servidor.
+
+### API Externa Utilizada
+
+- **Nome:** Google Gemini API
+- **Fornecedor:** Google
+- **Finalidade:** Geração de recomendações de jogos de tabuleiro por meio de modelos de linguagem.
+- **Site oficial:** https://ai.google.dev/
+
+### Licença de Uso
+
+A Google Gemini API é disponibilizada sob os **termos de uso da Google**, com planos gratuitos e pagos, sujeitos a limites de requisição e políticas de uso definidas pelo fornecedor.
+
+Termos de uso: https://ai.google.dev/terms
+
+### Cadastro e Autenticação
+
+Para utilizar a API é necessário:
+
+1. Possuir uma conta Google.
+2. Criar um projeto no Google AI Studio.
+3. Gerar uma **API Key** para autenticação.
+4. Armazenar a chave de forma segura no backend, utilizando variáveis de ambiente.
+
+**Importante**: A chave da API **não é exposta no frontend** em nenhum momento.
+
+### Rotas Utilizadas
+
+A API do Gemini é acessada exclusivamente pelo backend, por meio da biblioteca oficial do Google, utilizando o método de geração de conteúdo:
+
+- **Método:** `models.generateContent`
+- **Modelo utilizado:** `gemini-2.5-flash`
+- **Tipo de entrada:** Texto (prompt estruturado)
+- **Tipo de saída:** Texto gerado com recomendação de jogo e explicação
+
+O frontend consome apenas a rota interna do backend responsável pela recomendação:
+
+- `POST /ai/recommendation`
+
+Dessa forma, o frontend permanece desacoplado da API externa, comunicando-se apenas com a API principal do sistema.
 
 ---
 
