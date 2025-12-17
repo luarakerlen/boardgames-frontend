@@ -12,6 +12,7 @@ Esse é a parte do **frontend** do projeto. O **backend** utilizado nas chamadas
 - [Funcionalidades](#funcionalidades)
 - [Como Executar](#como-executar)
 - [Estrutura do Projeto](#estrutura-do-projeto)
+- [Arquitetura da Solução](#arquitetura-da-solução)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Deploy](#deploy)
 - [Observações](#observações)
@@ -49,6 +50,10 @@ Esse é a parte do **frontend** do projeto. O **backend** utilizado nas chamadas
 ### Funcionalidades adicionadas na Sprint de Arquitetura de Software
 
 - **Editar jogos**: Permite atualizar informações de jogos existentes.
+- **Sugestão com IA**: O usuário pode informar preferências (ex.: jogo estratégico, rápido, leve). O sistema solicita ao backend uma recomendação gerada por IA, que considera:
+  - Lista de jogos cadastrados
+  - Quantidade de jogadores
+  - Preferências informadas
 
 ---
 
@@ -98,6 +103,28 @@ O frontend estará disponível em `http://localhost:8080`.
   - Gerenciamento de estados (jogos disponíveis/indisponíveis).
   - Comunicação com o backend para adicionar e deletar jogos.
   - Lógica para escolha aleatória de jogos.
+
+---
+
+## Arquitetura da Solução
+
+Este projeto segue o Cenário 1.1 de Arquitetura, onde:
+
+- O frontend se comunica com um backend próprio;
+
+- O backend é responsável por:
+
+  - Persistência dos dados em banco de dados
+
+  - Comunicação com uma API externa de IA para geração de recomendações
+
+### Diagrama da Arquitetura
+
+> Cenário 1.1 – Frontend conectado ao backend, que por sua vez integra com uma API externa e um banco de dados.
+
+Imagem do modelo arquitetural:
+
+![Diagrama de Arquitetura – Cenário 1.1](./arquitetura-cenario-1-1.png)
 
 ---
 
